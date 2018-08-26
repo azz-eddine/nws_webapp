@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% set active_page = "forcast_week" %}
+{% block title %}Forecast{% endblock %}
+{% block header %}{% include 'header.html' %}{% endblock %}
+{% block content %}
+    {% include 'forecast_header.html' %}
+    {% include 'menu.html' %}
+    <div class="row">
+        <div class="col">
+            <ul class="list-group list-group-flush">
+                {% for period in periods %}
+                <li class="list-group-item clearfix">
+                    <span class="float-left">
+                        <small class="text-muted">{{ period.shortForecast }}</small><br>
+                        {{ period.name }}
+                    </span>
+                    <span class="float-right">{{ period.temperature }} &deg;{{ period.temperatureUnit }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

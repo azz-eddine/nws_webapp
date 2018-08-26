@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Error{% endblock %}
+{% block content %}
+<div class="row justify-content-md-center">
+    <div class="col-sm-12 p-3">
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">{{ error.title }}</h4>
+            <p>{{ error.detail }}</p>
+            <hr>
+            <p class="mb-0">
+                {{ error }}
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

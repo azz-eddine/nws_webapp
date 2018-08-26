@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% set active_page = "forecast_today" %}
+{% block title %}Forecast{% endblock %}
+{% block header %}{% include 'header.html' %}{% endblock %}
+{% block content %}
+    <div class="row {% if is_daytime %}is_daytime{% else %}is_not_daytime{% endif %}">
+        <div class="col p-5 text-center">
+            <img src="{{ now.icon }}" class="rounded-circle">
+            <h1 class="display-3">{{ now.temperature }} &deg;{{ now.temperatureUnit }}</h1>
+            <h2 class="display-5">{{ now.shortForecast }}</h2>
+        </div>
+    </div>
+    {% include 'menu.html' %}
+    <div class="row">
+        <div class="col">
+            <ul class="list-group list-group-flush">
+                {% for period in periods %}
+                <li class="list-group-item clearfix">
+                    <span class="float-left">
+                        <small class="text-muted">{{ period.shortForecast }}</small><br>
+                        {{ period.startTime |datetimeformat }}
+                    </span>
+                    <span class="float-right">{{ period.temperature }} &deg;{{ period.temperatureUnit }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

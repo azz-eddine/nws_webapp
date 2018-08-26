@@ -1,0 +1,24 @@
+.container {
+    width: auto;
+    max-width: 480px;
+}
+
+.header a,
+.header a:visited {
+    color: #6c757d;
+}
+
+.header a:active {
+    color: #3C3A3A;
+}
+
+.is_daytime {
+    background: #FDF6E6;
+    color: #3C3A3A;
+}
+
+.is_not_daytime {
+    background: #3C3A3A;
+    color: #FDF6E6;
+}
+
