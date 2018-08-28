@@ -13,7 +13,8 @@ api_endpoint = 'https://api.weather.gov'
 api_forecast_week = api_endpoint + '/points/{0},{1}/forecast'
 api_forecast_today = api_endpoint + '/points/{0},{1}/forecast/hourly'
 # Requests cache config
-requests_cache.install_cache('nws_cache', backend='sqlite', expire_after=180000)
+expiration_delay = 1800
+requests_cache.install_cache('nws_cache', backend='sqlite', expire_after=expiration_delay)
 
 
 @app.template_filter('datetimeformat')
