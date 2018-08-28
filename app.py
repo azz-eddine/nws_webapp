@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template
+from flask import request
 import geocoder
 import requests
 import requests_cache
@@ -24,7 +25,7 @@ def datetimeformat(value, format='%H:%M / %d-%m-%Y'):
 @app.route('/forecast/week')
 def forecast_week():
     # Get user location g.lat g.lng | test with Mountain View
-    g = geocoder.ip('8.8.8.8' if app.config['ENV'] == 'development' else 'me')
+    g = geocoder.ip('8.8.8.8' if app.config['ENV'] == 'development' else request.remote_addr)
     # Call weather API
     r = requests.get(api_forecast_week.format(str(g.lat), str(g.lng)))
     # We have a response
@@ -46,7 +47,7 @@ def forecast_week():
 @app.route('/forecast/today')
 def forecast_today():
     # Get user location g.lat g.lng | test with Mountain View
-    g = geocoder.ip('8.8.8.8' if app.config['ENV'] == 'development' else 'me')
+    g = geocoder.ip('8.8.8.8' if app.config['ENV'] == 'development' else request.remote_addr)
     # Call weather API
     r = requests.get(api_forecast_today.format(str(g.lat), str(g.lng)))
     # We have a response
