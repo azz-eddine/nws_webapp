@@ -1,8 +1,8 @@
 <div class="row p-3">
     <div class="col text-right">
-        <a href="{{ url_for('forecast_today') }}">Today</a>
+        <a class="badge {% if active_page == "forecast_today" %}badge-dark{% else %}badge-light{% endif %}" href="{{ url_for('forecast_today') }}">Today</a>
     </div>
     <div class="col text-left">
-        <a href="{{ url_for('forecast_week') }}">Week</a>
+        <a class="badge {% if active_page == "forecast_week" %}badge-dark{% else %}badge-light{% endif %}" href="{{ url_for('forecast_week') }}">Week</a>
     </div>
 </div>
