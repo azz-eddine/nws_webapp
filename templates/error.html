@@ -5,10 +5,10 @@
     <div class="col-sm-12 p-3">
         <div class="alert alert-danger" role="alert">
             <p>
-                {% if error.status == 404 %}
+                {% if error.type == 'https://api.weather.gov/problems/InvalidPoint' %}
                     This site provides information based on the U.S. National Weather Service. The location we have detected based on your IP address appears to be outside of the geographic area the NWS serves.
                 {% else %}
-                    {{ error.detail }}
+                    An error occurred. Please try again later.
                 {% endif %}
             </p>
         </div>
