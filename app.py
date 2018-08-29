@@ -11,14 +11,14 @@ app = Flask(__name__)
 # Weather API URLs
 api_endpoint = 'https://api.weather.gov'
 api_forecast_week = api_endpoint + '/points/{0},{1}/forecast'
-api_forecast_today = api_endpoint + '/points/{0},{1}/forecast/hourly'
+api_forecast_hourly = api_endpoint + '/points/{0},{1}/forecast/hourly'
 # Requests cache config
 expiration_delay = 1800
 requests_cache.install_cache('nws_cache', backend='sqlite', expire_after=expiration_delay)
 
 
 @app.template_filter('datetimeformat')
-def datetimeformat(value, format='%H:%M / %d-%m-%Y'):
+def datetimeformat(value, format='%b %d at %I %p'):
     return parse(value).strftime(format)
 
 
@@ -45,16 +45,16 @@ def forecast_week():
         )
 
 
-@app.route('/forecast/today')
-def forecast_today():
+@app.route('/forecast/hourly')
+def forecast_hourly():
     # Get user location g.lat g.lng | test with Mountain View
     g = geocoder.ip('8.8.8.8' if app.config['ENV'] == 'development' else request.remote_addr)
     # Call weather API
-    r = requests.get(api_forecast_today.format(str(g.lat), str(g.lng)))
+    r = requests.get(api_forecast_hourly.format(str(g.lat), str(g.lng)))
     # We have a response
     if r.status_code == 200:
         return render_template(
-            'forecast_today.html',
+            'forecast_hourly.html',
             country=g.country,
             city=g.city,
             now=r.json()['properties']['periods'][0],

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% set active_page = "forecast_today" %}
+{% set active_page = "forecast_hourly" %}
 {% block title %}Forecast{% endblock %}
 {% block header %}{% include 'header.html' %}{% endblock %}
 {% block content %}
@@ -16,11 +16,13 @@
             <ul class="list-group list-group-flush">
                 {% for period in periods %}
                 <li class="list-group-item clearfix">
-                    <span class="float-left">
-                        <small class="text-muted">{{ period.shortForecast }}</small><br>
+                    <span class="float-left text-left">
                         {{ period.startTime |datetimeformat }}
                     </span>
-                    <span class="float-right">{{ period.temperature }} &deg;{{ period.temperatureUnit }}</span>
+                    <span class="float-right text-right">
+                        <small class="text-muted">{{ period.shortForecast }}</small><br>
+                        {{ period.temperature }} &deg;{{ period.temperatureUnit }}
+                    </span>
                 </li>
                 {% endfor %}
             </ul>
