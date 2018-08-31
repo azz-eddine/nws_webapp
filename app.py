@@ -36,7 +36,6 @@ def forecast_week():
             country=g.country,
             city=g.city,
             now=r.json()['properties']['periods'][0],
-            is_daytime=r.json()['properties']['periods'][0]['isDaytime'],
             periods=r.json()['properties']['periods'][1:])
     else:
         return render_template(
@@ -58,7 +57,6 @@ def forecast_hourly():
             country=g.country,
             city=g.city,
             now=r.json()['properties']['periods'][0],
-            is_daytime=r.json()['properties']['periods'][0]['isDaytime'],
             periods=r.json()['properties']['periods'][1:])
     else:
         return render_template(

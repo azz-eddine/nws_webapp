@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% set active_page = "forecast_week" %}
-{% block title %}Forecast{% endblock %}
+{% block title %}Forecast Week{% endblock %}
 {% block header %}{% include 'header.html' %}{% endblock %}
 {% block content %}
     {% include 'forecast_header.html' %}
@@ -14,8 +14,11 @@
                         {{ period.name }}
                     </span>
                     <span class="float-right text-right">
-                        <small class="text-muted">{{ period.shortForecast }}</small><br>
-                        {{ period.temperature }} &deg;{{ period.temperatureUnit }}
+                        <img src="{{ period.icon }}" width="50" class="rounded-circle"><br>
+                        <small class="text-muted">
+                            {{ period.shortForecast }}<br>
+                            {{ period.temperature }} &deg;{{ period.temperatureUnit }}
+                        </small>
                     </span>
                 </li>
                 {% endfor %}

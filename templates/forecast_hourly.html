@@ -3,13 +3,7 @@
 {% block title %}Forecast{% endblock %}
 {% block header %}{% include 'header.html' %}{% endblock %}
 {% block content %}
-    <div class="row {% if is_daytime %}is_daytime{% else %}is_not_daytime{% endif %}">
-        <div class="col p-5 text-center">
-            <img src="{{ now.icon }}" class="rounded-circle">
-            <h1 class="display-3">{{ now.temperature }} &deg;{{ now.temperatureUnit }}</h1>
-            <h2 class="display-5">{{ now.shortForecast }}</h2>
-        </div>
-    </div>
+    {% include 'forecast_header.html' %}
     {% include 'menu.html' %}
     <div class="row">
         <div class="col">
@@ -20,8 +14,11 @@
                         {{ period.startTime |datetimeformat }}
                     </span>
                     <span class="float-right text-right">
-                        <small class="text-muted">{{ period.shortForecast }}</small><br>
-                        {{ period.temperature }} &deg;{{ period.temperatureUnit }}
+                        <img src="{{ period.icon }}" width="50" class="rounded-circle"><br>
+                        <small class="text-muted">
+                            {{ period.shortForecast }}<br>
+                            {{ period.temperature }} &deg;{{ period.temperatureUnit }}
+                        </small>
                     </span>
                 </li>
                 {% endfor %}

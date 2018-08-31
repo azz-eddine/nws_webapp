@@ -1,6 +1,6 @@
-<div class="row {% if is_daytime %}is_daytime{% else %}is_not_daytime{% endif %}">
+<div class="row {% if now.isDaytime %}is_daytime{% else %}is_not_daytime{% endif %}">
     <div class="col p-5 text-center">
-        <img src="{{ now.icon }}" class="rounded-circle">
+        <img src="{{ now.icon }}" width="150" class="rounded-circle">
         <h1 class="display-3">{{ now.temperature }} &deg;{{ now.temperatureUnit }}</h1>
         <h2 class="display-5">{{ now.shortForecast }}</h2>
     </div>
