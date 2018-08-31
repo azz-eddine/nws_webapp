@@ -13,12 +13,12 @@
 }
 
 .is_daytime {
-    background: #F3C552;
+    background: #FDF6E6;
     color: #3C3A3A;
 }
 
 .is_not_daytime {
-    background: #63628D;
-    color: #EEEEEE;
+    background: #3C3A3A;
+    color: #FDF6E6;
 }
 
